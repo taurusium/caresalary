@@ -1,7 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Firestore } from '@google-cloud/firestore';
+import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class PostsService {
+  constructor(
+    @Inject('FirestoreInstance') private readonly firestore: Firestore,
+  ) {}
   getOnePost(): string {
     return 'get one post';
   }
@@ -10,8 +14,10 @@ export class PostsService {
     return 'get all posts';
   }
 
-  createPost(): string {
-    return 'create post';
+  async createPost(): Promise<any> {
+    await this.firestore.collection('posts').add({
+      title: 'test',
+    });
   }
 
   updatePost(): string {
