@@ -1,24 +1,31 @@
 import { Module } from '@nestjs/common';
-import * as admin from 'firebase-admin';
-import { firebaseConfig } from 'src/configs/firebase.config';
+import { FirebaseService } from './firebase.service';
 
-const serviceAccount = firebaseConfig as admin.ServiceAccount;
+// import * as admin from 'firebase-admin';
+// import * as serviceAccount from '../firebase/firebaseServiceAccount.json';
 
-const firebaseProvider = {
-  provide: 'FirestoreInstance',
-  useFactory: () => {
-    const firebaseAdmin = admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-      databaseURL: `https://${firebaseConfig.project_id}.firebaseio.com`,
-      storageBucket: `${firebaseConfig.project_id}.appspot.com`,
-    });
-    return firebaseAdmin.firestore();
-  },
-};
+// const firebaseConfig = serviceAccount as admin.ServiceAccount;
 
+// const firebaseProvider = {
+//   provide: 'FirestoreInstance',
+//   useFactory: () => {
+//     const firebaseAdmin = admin.initializeApp({
+//       credential: admin.credential.cert(firebaseConfig),
+//       databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`,
+//       storageBucket: `${serviceAccount.project_id}.appspot.com`,
+//     });
+//     return firebaseAdmin.firestore();
+//   },
+// };
+
+// @Module({
+//   imports: [],
+//   providers: [firebaseProvider],
+//   exports: ['FirestoreInstance'],
+// })
 @Module({
   imports: [],
-  providers: [firebaseProvider],
-  exports: ['FirestoreInstance'],
+  providers: [FirebaseService],
+  exports: [FirebaseService],
 })
 export class FirebaseModule {}
