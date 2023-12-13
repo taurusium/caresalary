@@ -15,6 +15,8 @@ const SignupComponent = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       // 회원가입 성공 로직 
       console.log('회원가입 성공!');
+
+      
     } catch (error) {
       // 에러 처리
       setError(error.message);
@@ -22,23 +24,25 @@ const SignupComponent = () => {
   };
   
   return (
-    <div>
-      <form onSubmit={handleSignup}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="이메일"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호"
-        />
-        <button type="submit">회원가입</button>
-      </form>
-      {error && <p>{error}</p>}
+    <div className="outer-div">
+      <div className="form-container">
+        <form onSubmit={handleSignup}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="이메일"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="비밀번호"
+          />
+          <button type="submit">회원가입</button>
+        </form>
+        {error && <p>{error}</p>}
+      </div>
     </div>
   );
 };
