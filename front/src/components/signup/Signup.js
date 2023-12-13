@@ -1,5 +1,6 @@
 // SignupComponent.js
 import React, { useState } from 'react';
+import './styles/SignupStyle.css'
 import { auth } from '../common/firebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
