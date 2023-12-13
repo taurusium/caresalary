@@ -11,7 +11,7 @@
 /* 인풋 박스 스타일 */
 input {
   display: block; /* 한 줄에 하나씩 */
-  width: 100%; /* 가로 길이 최대 */
+  width: 90%; /* 가로 길이 최대 */
   padding: 10px; /* 패딩으로 여유롭게 */
   margin-bottom: 10px; /* 아래 여백 */
   border: 1px solid #e6e6e6; /* 테두리 */
@@ -32,3 +32,24 @@ button {
 button:hover {
   background-color: #45a049; /* 버튼 위에 있을 때 색상 변경 */
 }
+
+/* 가장 바깥쪽 div 스타일링 */
+.outer-div {
+  display: flex; /* 플렉스 박스 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 100vh; /* 뷰포트 높이에 맞춤 */
+
+  /* 모달처럼 보이게 하려면 */
+  background-color: rgba(0, 0, 0, 0.5); /* 배경 반투명 */
+}
+
+/* form과 그 안의 요소들을 감싸는 div 스타일링 */
+.form-container {
+  background-color: white; /* 배경색 흰색 */
+  padding: 20px; /* 안쪽 여백 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  width: 300px; /* 너비 설정 */
+}
+
