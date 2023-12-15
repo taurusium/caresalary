@@ -1,38 +1,31 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* 컬럼 방향으로 정렬 */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 10px; /* 컴포넌트 간 간격 */
+  height: 900px; /* 전체 높이 조정 */
 }
 
-.App-link {
-  color: #61dafb;
+.tab-menu {
+  display: flex; /* 탭 메뉴를 가로로 정렬 */
+  gap: 10px; /* 버튼 간 간격 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tab-menu button {
+  padding: 10px;
+  width: 100px;
+  background: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff; /* 버튼 글자색 변경 */
+}
+
+.tab-menu button.active {
+  background: #45a049;
+}
+
+.outer-div {
+  height: 300px;
 }
