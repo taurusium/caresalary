@@ -1,0 +1,42 @@
+/* EmployeeStyle.css */
+
+.employee-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.employee-modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 400px; /* 필요에 따라 조정 */
+  margin: 1rem;
+}
+
+.employee-modal-header {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employee-close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.employee-modal-body {
+  padding: 1rem;
+  /* 필요한 추가 스타일을 여기에 정의하세요 */
+}
