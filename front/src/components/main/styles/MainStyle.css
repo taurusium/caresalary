@@ -1,0 +1,83 @@
+/* MainStyle.css */
+/* 전체 메인 */
+/* .main-container {
+  width: 1200px;
+  height: 900px;
+} */
+
+/* 가운데 */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* This ensures that the children of flex-container fill the vertical space */
+}
+
+/* 가운데 포스팅과 우측 스케쥴 */
+.main-content-area {
+  display: flex;
+  width: 1000px; /* This should be the combined width of posting-page and detail-view */
+}
+
+/* 가운데 포스팅 */
+.posting-page {
+  flex-grow: 1; /* Allows posting-page to fill the available space */
+  border: 3px dashed rgb(120, 190, 100);
+  border-radius: 3px;
+  height: 600px;
+}
+
+/* 우측 스케쥴 */
+.detail-view {
+  width: 200px; /* Fixed width for detail-view */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack children vertically */
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+.details-my {
+  flex-grow: 3; /* Takes up 3 parts of the space */
+  background-color: #dedede; /* Just for visibility, you can remove or change it */
+}
+
+.details-current {
+  flex-grow: 7; /* Takes up 7 parts of the space */
+  background-color: #cdecdc; /* Just for visibility, you can remove or change it */
+}
+
+/* 좌측 메뉴 */
+.main-menu {
+  width: 200px; /* Fixed width for main-menu */
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+/* 하단 챗봇 */
+.chat-assistant-area {
+  display: flex; /* Enables flex layout for children */
+  flex-direction: row;
+  height: 100px; /* Fixed height */
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+.chat-window {
+  flex-grow: 7;
+}
+
+.assistant-area {
+  flex-grow: 3;
+}
+
+/* 주요 / 긴급 프로젝트 페이지 */
+.main-alert {
+  height: 50px;
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+button {
+  width: 100%; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  background-color: #4CAF50; /* 초록색 배경 */
+  color: white; /* 글자 흰색 */
+  border: none; /* 테두리 없애기 */
+  border-radius: 1px; /* 모서리 둥글게 */
+  cursor: pointer; /* 커서 손가락 모양 */
+}

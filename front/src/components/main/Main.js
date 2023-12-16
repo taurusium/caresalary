@@ -34,25 +34,51 @@ const MainComponent = () => {
   return (
     <div className="main-container">
       <header className="main-header">
-        {/* 로고나 회사명을 표시하는 영역 */}
+        {/* Header content */}
         <div className="logo">CS</div>
       </header>
-      <aside className="main-menu">
-        {/* 메뉴 리스트를 표시하는 영역 */}
-        <button className="menu-item">일정 관리</button>
-        <button className="menu-item">고객 관리</button>
-        <button className="menu-item">지원 관리</button>
-        <button className="menu-item" onClick={handleSignOut}>로그아웃</button>
-      </aside>
-      <section className="main-content">
-        {/* 메인 콘텐츠를 표시하는 영역 */}
+      
+      <div className="flex-container">
+        <aside className="main-menu">
+          <button className="menu-item">일정 관리</button>
+          <button className="menu-item">고객 관리</button>
+          <button className="menu-item">직원 관리</button>
+          <button className="menu-item">문서 작성</button>
+          <button className="menu-item" onClick={handleSignOut}>로그아웃</button>
+        </aside>
+        
+        <div className="main-content-area">
+          <section className="posting-page">
+          </section>
+
+          <aside className="detail-view">
+            <div className="details-my">
+              <p>나의 일정</p>
+            </div>
+            <div className="details-current">
+              <p>현재 업무</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <section className="main-alert">
         <div className="content-box">주요 / 긴급 프로젝트 페이지</div>
       </section>
-      <aside className="detail-view">
-        {/* 상세 정보를 표시하는 영역 */}
-        <div className="details-item">내역 상세</div>
-        <div className="details-item">내역 리스트</div>
-      </aside>
+          
+      
+      <footer className="chat-assistant-area">       
+      
+        <div className="assistant-area">
+          <p>AI챗</p>
+
+        </div>
+
+        <div className="chat-window">
+          <p>커뮤니티챗</p>
+        </div>
+
+      </footer>
     </div>
   );
 };
