@@ -3,49 +3,58 @@ import './styles/MainStyle.css';
 import { auth } from '../common/firebaseConfig';
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
-const SigninComponent = () => {
-    const [user, setUser] = useState(null);
+const MainComponent = () => {
+  const [user, setUser] = useState(null);
 
-    // NOTE 화면 처음 실행시 로그인 상태 확인
-    useEffect(() => {
-      // Auth 상태가 변경될 때마다 호출,
-      // onAuthStateChanged에 인증값과 유저 객체currentUser를 전달, 로그인 상태를 확인, 
-      // currentUser.email, currentUser.uid 형태
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        if (currentUser) {
-          // 사용자가 로그인한 상태
-          setUser(currentUser);
-        } else {
-          // 사용자가 로그아웃한 상태
-          setUser(null);
-        }
-      });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        // 로그인한 사용자가 있을 경우 user 상태를 업데이트
+        setUser(currentUser);
+      } else {
+        // 사용자가 없을 경우 user 상태를 null로 설정
+        setUser(null);
+      }
+    });
 
-      // 컴포넌트가 언마운트 될 때 unsubscribe 함수를 호출
-      return unsubscribe;
-    }, []);
+    // 구독 해지를 위한 함수를 반환
+    return unsubscribe;
+  }, []);
 
-    // NOTE 로그아웃 버튼
-    const handleSignOut = () => {
-      signOut(auth).then(() => {
-          console.log("사용자가 로그아웃했습니다.");
-      }).catch((error) => {
-          console.error("로그아웃 중 오류 발생:", error);
-      });
-    };
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      // 로그아웃 성공 시 처리
+      console.log("User signed out.");
+    }).catch((error) => {
+      // 로그아웃 실패 시 처리
+      console.error("Sign out error:", error);
+    });
+  };
 
   return (
-      <div className="signin-component">
-        {user ? (
-          <div>
-            <p>안녕하세요, {user.email}!</p>
-            <button onClick={handleSignOut}>로그아웃</button>
-          </div>
-        ) : (
-            <p>로그인 상태가 아닙니다.</p>
-        )}
-      </div>
-    );
+    <div className="main-container">
+      <header className="main-header">
+        {/* 로고나 회사명을 표시하는 영역 */}
+        <div className="logo">CS</div>
+      </header>
+      <aside className="main-menu">
+        {/* 메뉴 리스트를 표시하는 영역 */}
+        <button className="menu-item">일정 관리</button>
+        <button className="menu-item">고객 관리</button>
+        <button className="menu-item">지원 관리</button>
+        <button className="menu-item" onClick={handleSignOut}>로그아웃</button>
+      </aside>
+      <section className="main-content">
+        {/* 메인 콘텐츠를 표시하는 영역 */}
+        <div className="content-box">주요 / 긴급 프로젝트 페이지</div>
+      </section>
+      <aside className="detail-view">
+        {/* 상세 정보를 표시하는 영역 */}
+        <div className="details-item">내역 상세</div>
+        <div className="details-item">내역 리스트</div>
+      </aside>
+    </div>
+  );
 };
 
-export default SigninComponent;
+export default MainComponent;
