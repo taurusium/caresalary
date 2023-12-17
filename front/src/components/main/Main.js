@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './styles/MainStyle.css';
 import { auth } from '../common/firebaseConfig';
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import ScheduleComponent from './schedule/Schedule';
-import CustomerComponent from './customer/Customer';
-import EmployeeComponent from './employee/Employee';
-import DocumentsComponent from './documents/Documents';
+import ScheduleComponent from './schedule/ScheduleComponent';
+import CustomerComponent from './customer/CustomerComponent';
+import EmployeeComponent from './employee/EmployeeComponent';
+import DocumentsComponent from './documents/DocumentsComponent';
 
 const MainComponent = () => {
   const [user, setUser] = useState(null);
@@ -52,7 +52,6 @@ const MainComponent = () => {
   const renderModal = () => {
     switch (activeModalId) {
       case 'schedule':
-        console.log(111)
         return <ScheduleComponent showModal={activeModalId === 'schedule'} closeModal={handleCloseModal} />;
       case 'customer':
         return <CustomerComponent showModal={activeModalId === 'customer'} closeModal={handleCloseModal} />;
