@@ -1,34 +1,40 @@
 /* MainStyle.css */
 /* 전체 메인 */
-/* .main-container {
-  width: 1200px;
-  height: 900px;
-} */
+.main-container {
+  top: 300px;
+  width: 1500px;
+  height: 1500px;
+  background-image: url('../../../../public/images/main_frame.png'); 
+  background-size: cover;
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+  position: relative;
+}
 
 /* 가운데 */
 .flex-container {
   display: flex;
   flex-direction: row;
-  align-items: stretch; /* This ensures that the children of flex-container fill the vertical space */
+  width: 1500px;
 }
 
 /* 가운데 포스팅과 우측 스케쥴 */
 .main-content-area {
   display: flex;
-  width: 1000px; /* This should be the combined width of posting-page and detail-view */
+  width: 100%; /* This should be the combined width of posting-page and detail-view */
 }
 
 /* 가운데 포스팅 */
 .posting-page {
-  flex-grow: 1; /* Allows posting-page to fill the available space */
+  width: 80%;
   border: 3px dashed rgb(120, 190, 100);
   border-radius: 3px;
-  height: 600px;
+  height: 1200px;
 }
 
 /* 우측 스케쥴 */
 .detail-view {
-  width: 200px; /* Fixed width for detail-view */
+  width: 20%;
   display: flex; /* Make it a flex container */
   flex-direction: column; /* Stack children vertically */
   border: 3px dashed rgb(120, 190, 100);
@@ -46,7 +52,7 @@
 
 /* 좌측 메뉴 */
 .main-menu {
-  width: 200px; /* Fixed width for main-menu */
+  width: 20%; /* Fixed width for main-menu */
   border: 3px dashed rgb(120, 190, 100);
 }
 
