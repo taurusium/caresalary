@@ -6,6 +6,7 @@ import ScheduleComponent from './schedule/ScheduleComponent';
 import CustomerComponent from './customer/CustomerComponent';
 import EmployeeComponent from './employee/EmployeeComponent';
 import DocumentsComponent from './documents/DocumentsComponent';
+// import titleImage from '../../assets/images/title_resize.png';
 
 const MainComponent = () => {
   const [user, setUser] = useState(null);
@@ -87,10 +88,14 @@ const MainComponent = () => {
 
           <aside className="detail-view">
             <div className="details-my">
-              <p>나의 일정</p>
+              <div className="image-container">
+                <div className="overlay-text">나의 일정</div>
+              </div>
             </div>
             <div className="details-current">
-              <p>현재 업무</p>
+              <div className="image-container">
+                <div className="overlay-text">현재 업무</div>
+              </div>
             </div>
           </aside>
         </div>
