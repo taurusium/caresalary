@@ -16,6 +16,7 @@ const MainComponent = () => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         // 로그인한 사용자가 있을 경우 user 상태를 업데이트
+        console.log("유저 객체 확인",currentUser.accessToken)
         setUser(currentUser);
       } else {
         // 사용자가 없을 경우 user 상태를 null로 설정
@@ -114,8 +115,18 @@ const MainComponent = () => {
         </div>
 
         <div className="chat-window">
-          <p>커뮤니티챗</p>
+          <div className="chat-header">
+            <h2>커뮤니티챗</h2>
+          </div>
+          <div className="chat-body">
+            {/* 채팅 메시지가 표시되는 부분 */}
+          </div>
+          <div className="chat-footer">
+            <input type="text" placeholder="메시지 입력..." />
+            <button>전송</button>
+          </div>
         </div>
+
 
       </footer>
 

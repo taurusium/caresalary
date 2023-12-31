@@ -51,7 +51,7 @@ function App() {
     <Router>
       <div className="app-container">
         <NavigationMenu user={user} />
-
+        
         <Routes>
           <Route path="/signin" element={<SigninComponent />} />
           <Route path="/signup" element={<SignupComponent />} />
