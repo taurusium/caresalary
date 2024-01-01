@@ -8,6 +8,27 @@
   margin: auto; /* 가운데 정렬 */
 }
 
+/* 셀렉트(드롭다운) 스타일 */
+select {
+  display: block; /* 한 줄에 하나씩 */
+  width: 97%; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  margin-bottom: 10px; /* 아래 여백 */
+  border: 1px solid #e6e6e6; /* 테두리 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  background-color: white; /* 배경색 흰색 */
+  color: #333; /* 글자색 */
+  cursor: pointer; /* 커서 손가락 모양 */
+}
+
+select:focus {
+  border-color: #4CAF50; /* 포커스 될 때 테두리 색상 변경 */
+}
+
+select option {
+  color: #333; /* 옵션 글자색 */
+}
+
 /* 인풋 박스 스타일 */
 input {
   display: block; /* 한 줄에 하나씩 */

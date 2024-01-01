@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
 import './styles/SigninStyle.css';
-import { useNavigate } from 'react-router-dom'; // useNavigate import
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../common/firebaseConfig';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
 const SigninComponent = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setMessage('로그인 성공! 환영해요~ 🎉');
-      setError(''); // 이전 에러 메시지 초기화
+      setMessage('로그인 성공! 환영합니다~ 🎉');
+      setError('');
       navigate('/main'); // 로그인 성공 후 메인 페이지로 이동
     } catch (error) {
-      setMessage(''); // 이전 성공 메시지 초기화
+      setMessage('');
       setError('로그인 실패: ' + error.message);
     }
   };

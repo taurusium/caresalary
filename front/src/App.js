@@ -11,7 +11,7 @@ function NavigationMenu({ user }) {
   const navigate = useNavigate();
 
   return (
-    !user && (
+    (
       <div className="tab-menu">
         <button onClick={() => navigate('/signin')}>로그인</button>
         <button onClick={() => navigate('/signup')}>회원가입</button>
@@ -56,7 +56,7 @@ function App() {
           <Route path="/signin" element={<SigninComponent />} />
           <Route path="/signup" element={<SignupComponent />} />
           <Route path="/main" element={user ? <MainPage /> : <Navigate to="/signin" replace />} />
-          <Route path="*" element={!user ? <Navigate to="/signin" replace /> : <Navigate to="/main" replace />} />
+          <Route path="/" element={!user ? <Navigate to="/signin" replace /> : <Navigate to="/main" replace />} />
         </Routes>
       </div>
     </Router>

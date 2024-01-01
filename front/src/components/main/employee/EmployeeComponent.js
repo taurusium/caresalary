@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/EmployeeStyle.css'; // 적절한 CSS 스타일을 추가해주세요
+import './styles/EmployeeStyle.css';
 import { auth } from '../../common/firebaseConfig';
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
@@ -16,7 +16,7 @@ const EmployeeComponent = ({ showModal, closeModal }) => {
           <button className="employee-close-button" onClick={closeModal}>&times;</button>
         </div>
         <div className="employee-modal-body">
-          {/* 여기에 직원 관리 관련 내용을 추가하세요 */}
+          {/* 직원 관리 관련 내용 */}
         </div>
       </div>
     </div>

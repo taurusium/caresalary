@@ -1,5 +1,4 @@
 /* DocumentsStyle.css */
-
 .documents-modal-overlay {
   position: fixed;
   top: 0;
@@ -41,5 +40,4 @@
 
 .documents-modal-body {
   padding: 1rem;
-  /* 필요한 추가 스타일을 여기에 정의하세요 */
 }

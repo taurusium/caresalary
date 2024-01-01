@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/DocumentsStyle.css'; // 적절한 CSS 스타일을 추가해주세요
+import './styles/DocumentsStyle.css';
 import { auth } from '../../common/firebaseConfig';
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
@@ -16,7 +16,7 @@ const DocumentsComponent = ({ showModal, closeModal }) => {
           <button className="documents-close-button" onClick={closeModal}>&times;</button>
         </div>
         <div className="documents-modal-body">
-          {/* 여기에 문서 작성 관련 내용을 추가하세요 */}
+          {/* 문서 관련 */}
         </div>
       </div>
     </div>
