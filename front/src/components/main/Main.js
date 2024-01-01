@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styles/MainStyle.css';
-import { auth } from '../common/firebaseConfig';
+import { auth, db } from '../common/firebaseConfig';
 import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import ScheduleComponent from './schedule/ScheduleComponent';
 import CustomerComponent from './customer/CustomerComponent';
 import EmployeeComponent from './employee/EmployeeComponent';
@@ -10,17 +11,36 @@ import DocumentsComponent from './documents/DocumentsComponent';
 
 const MainComponent = () => {
   const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState({});
   const [activeModalId, setActiveModalId] = useState(null);
+
+  const fetchUserData = async (uid) => {
+    const userRef = doc(db, "users", uid);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists()) {
+      const userData = userSnap.data();
+      setUserData(userData);
+      console.log("Fetched user data: ", userData);
+
+    } else {
+      console.log("No user data found");
+      
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         // 로그인한 사용자가 있을 경우 user 상태를 업데이트
-        console.log("유저 객체 확인",currentUser.accessToken)
         setUser(currentUser);
+        fetchUserData(currentUser.uid);
+
+        console.log("유저 객체 확인", currentUser);
       } else {
         // 사용자가 없을 경우 user 상태를 null로 설정
         setUser(null);
+        setUserData({});
       }
     });
 

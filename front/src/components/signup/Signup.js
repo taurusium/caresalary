@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles/SignupStyle.css';
 import { auth, db } from '../common/firebaseConfig';
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { useNavigate } from 'react-router-dom';
 
 const SignupComponent = () => {
@@ -18,15 +18,18 @@ const SignupComponent = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      await addDoc(collection(db, "users"), {
-        uid: auth.currentUser.uid,
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const uid = userCredential.user.uid;
+      
+      await setDoc(doc(db, "users", uid), {
+        uid,
         name,
         age,
         role,
         language,
         email
       });
+
       navigate('/main'); // 회원가입 성공 시 메인 페이지로 바로 이동
     } catch (error) {
       setError(error.message);
