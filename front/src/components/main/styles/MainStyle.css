@@ -17,9 +17,10 @@
   height: 1500px;
   background-image: url('../../../assets/images/main_frame.png'); 
   background-size: cover;
-  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
-  background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
+  
 }
 
 /* 가운데 */

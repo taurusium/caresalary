@@ -12,11 +12,13 @@ const SignupComponent = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [role, setRole] = useState('개인');
+  const [qnumber, setQualifyingNumber] = useState('');
   const [language, setLanguage] = useState('');
   const [error, setError] = useState('');
 
   const handleSignup = async (event) => {
     event.preventDefault();
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
@@ -26,6 +28,7 @@ const SignupComponent = () => {
         name,
         age,
         role,
+        qnumber,
         language,
         email
       });
@@ -53,9 +56,16 @@ const SignupComponent = () => {
             placeholder="나이"
           />
           <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="개인">개인</option>
-            <option value="사업주">사업주</option>
+            <option value="할 일을 찾는">할 일을 찾는</option>
+            <option value="사람을 구하는">사람을 구하는</option>
+            <option value="모두">모두</option>
           </select>
+          <input
+            type="text"
+            value={qnumber}
+            onChange={(e) => setQualifyingNumber(e.target.value)}
+            placeholder="등록번호"
+          />
           <input
             type="text"
             value={language}
