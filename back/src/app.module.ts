@@ -6,11 +6,11 @@ import {
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
-import { PostsModule } from './posts/posts.module';
-import { FirebaseModule } from './firebase/firebase.module';
-import { UsersModule } from './users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { FirebaseModule } from './modules/firebase/firebase.module';
+import { UsersModule } from './modules/users/users.module';
 import { PreAuthMiddleware } from './middleware/pre.auth.middleware';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   imports: [AuthModule, PostsModule, FirebaseModule, UsersModule],

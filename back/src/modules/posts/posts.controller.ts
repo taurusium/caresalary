@@ -1,5 +1,14 @@
-import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
+import { CreatePostDTO } from './dto/create-post.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -15,8 +24,8 @@ export class PostsController {
   }
 
   @Post()
-  createPost() {
-    return this.postService.createPost();
+  createPost(@Body() createPostDTO: CreatePostDTO) {
+    return this.postService.createPost(createPostDTO);
   }
 
   @Put(':id')

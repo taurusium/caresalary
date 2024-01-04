@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request } from 'express';
 import * as admin from 'firebase-admin';
-import { FirebaseService } from 'src/firebase/firebase.service';
+import { FirebaseService } from 'src/modules/firebase/firebase.service';
 
 @Injectable()
 export class PreAuthMiddleware implements NestMiddleware {
@@ -17,7 +17,9 @@ export class PreAuthMiddleware implements NestMiddleware {
       const decodedToken = await this.auth.verifyIdToken(
         token.replace('Bearer', ''),
       );
-      req.user = { uid, email, role } = decodedToken;
+      let { uid, email, role } = decodedToken;
+
+      req.user = { uid, email, role };
 
       next();
     }
