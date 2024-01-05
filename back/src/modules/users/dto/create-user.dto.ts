@@ -1,6 +1,10 @@
 import { IsEmail, IsEnum, IsString } from 'class-validator';
-import { UserRole } from '../entities/user.entity';
 
+enum UserRole {
+  EMPLOYER = 'Employer',
+  EMPLOYEE = 'Employee',
+  EMPLOYER_AND_EMPLOYEE = 'EmployerAndEmployee',
+}
 export class CreateUserDto {
   @IsEmail()
   email: string;
