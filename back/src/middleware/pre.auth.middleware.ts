@@ -11,15 +11,18 @@ export class PreAuthMiddleware implements NestMiddleware {
   }
 
   async use(req: Request, res: Response, next: NextFunction) {
+    console.log('test');
     const token = req.headers.authorization;
 
     if (token != null && token != ' ') {
       const decodedToken = await this.auth.verifyIdToken(
         token.replace('Bearer', ''),
       );
-      let { uid, email, role } = decodedToken;
+      // let { uid, email, role } = decodedToken;
 
-      req.user = { uid, email, role };
+      req.user = decodedToken;
+
+      console.log(req.user);
 
       next();
     }
