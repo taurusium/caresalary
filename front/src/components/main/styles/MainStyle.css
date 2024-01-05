@@ -1,0 +1,149 @@
+/* MainStyle.css */
+/* 전체 메인 */
+.image-container {
+  width: 200px; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  background-color: #4CAF50; /* 초록색 배경 */
+  color: white; /* 글자 흰색 */
+  border: none; /* 테두리 없애기 */
+  border-radius: 1px; /* 모서리 둥글게 */
+  cursor: pointer; /* 커서 손가락 모양 */
+}
+
+
+.main-container {
+  top: 300px;
+  width: 1550px;
+  height: 1500px;
+  background-image: url('../../../assets/images/main_frame.png'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  
+}
+
+/* 가운데 */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  width: 1550px;
+}
+
+/* 가운데 포스팅과 우측 스케쥴 */
+.main-content-area {
+  display: flex;
+  width: 100%;
+}
+
+/* 가운데 포스팅 */
+.posting-page {
+  width: 80%;
+  border: 3px dashed rgb(120, 190, 100);
+  border-radius: 3px;
+  height: 900px;
+}
+
+/* 우측 스케쥴 */
+.detail-view {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+.details-my {
+  flex-grow: 3;
+}
+
+.details-current {
+  flex-grow: 7;
+}
+
+/* 좌측 메뉴 */
+.main-menu {
+  width: 20%;
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+/* 하단 챗봇 */
+.chat-assistant-area {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+.chat-window {
+  flex-grow: 7;
+}
+
+.assistant-area {
+  flex-grow: 3;
+}
+
+/* 주요 / 긴급 프로젝트 페이지 */
+.main-alert {
+  height: 50px;
+  border: 3px dashed rgb(120, 190, 100);
+}
+
+button {
+  width: 100%; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  background-color: #4CAF50; /* 초록색 배경 */
+  color: white; /* 글자 흰색 */
+  border: none; /* 테두리 없애기 */
+  border-radius: 1px; /* 모서리 둥글게 */
+  cursor: pointer; /* 커서 손가락 모양 */
+}
+
+/* ------------채팅 화면 시작-------------- */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.chat-header {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.chat-body {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.chat-footer input {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.chat-footer button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

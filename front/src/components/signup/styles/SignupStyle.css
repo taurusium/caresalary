@@ -1,0 +1,44 @@
+/* 회원가입 컴포넌트 전체 스타일 */
+.signup-container {
+  background-color: white; /* 배경 흰색 */
+  padding: 20px; /* 패딩으로 여유롭게 */
+  border-radius: 10px; /* 모서리 둥글게 */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  width: 300px; /* 가로 길이 */
+  margin: auto; /* 가운데 정렬 */
+}
+
+/* 인풋 박스 스타일 */
+input {
+  display: block; /* 한 줄에 하나씩 */
+  width: 90%; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  margin-bottom: 10px; /* 아래 여백 */
+  border: 1px solid #e6e6e6; /* 테두리 */
+  border-radius: 5px; /* 모서리 둥글게 */
+}
+
+/* 버튼 스타일 */
+button {
+  width: 100%; /* 가로 길이 최대 */
+  padding: 10px; /* 패딩으로 여유롭게 */
+  background-color: #4CAF50; /* 초록색 배경 */
+  color: white; /* 글자 흰색 */
+  border: none; /* 테두리 없애기 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  cursor: pointer; /* 커서 손가락 모양 */
+}
+
+button:hover {
+  background-color: #45a049; /* 버튼 위에 있을 때 색상 변경 */
+}
+
+/* form과 그 안의 요소들을 감싸는 div 스타일링 */
+.form-container {
+  background-color: white; /* 배경색 흰색 */
+  padding: 20px; /* 안쪽 여백 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  width: 300px; /* 너비 설정 */
+}
+
