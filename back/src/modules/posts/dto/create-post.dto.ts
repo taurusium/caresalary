@@ -1,6 +1,12 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 
-export class CreatePostDTO {
+enum Public {
+  ALL = 'all',
+  PRIVATE = 'private',
+}
+export class CreatePostDto {
+  userId: string;
+
   @IsString()
   @IsNotEmpty()
   title: string;
@@ -8,4 +14,12 @@ export class CreatePostDTO {
   @IsString()
   @IsNotEmpty()
   content: string;
+
+  @IsEnum(Public)
+  public: Public;
+
+  projectStartDate: Date;
+  projectEndDate: Date;
+  createAt: Date;
+  updateAt: Date;
 }

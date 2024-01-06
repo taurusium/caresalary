@@ -6,6 +6,7 @@ enum UserRole {
   EMPLOYER_AND_EMPLOYEE = 'EmployerAndEmployee',
 }
 export class CreateUserDto {
+  userId: string;
   @IsEmail()
   email: string;
 

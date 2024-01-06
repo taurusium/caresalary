@@ -1,8 +1,9 @@
-import { Firestore } from '@google-cloud/firestore';
+import { FieldValue, Firestore } from '@google-cloud/firestore';
 import { Injectable } from '@nestjs/common';
-import { CreatePostDTO } from './dto/create-post.dto';
+import { CreatePostDto } from './dto/create-post.dto';
 import { FirebaseService } from 'src/modules/firebase/firebase.service';
 
+//TODO Promise<any>수정
 @Injectable()
 export class PostsService {
   private readonly firestore: Firestore;
@@ -10,30 +11,53 @@ export class PostsService {
   constructor(private readonly firebaseService: FirebaseService) {
     this.firestore = firebaseService.getFirestore();
   }
-  getOnePost(): string {
-    return 'get one post';
+
+  async getOnePost(postId: string): Promise<any> {
+    const snapshot = await this.firestore.collection('posts').doc(postId).get();
+    const post = snapshot.data();
+    return post;
   }
 
-  getAllPosts(): void {
-    // return 'get all posts';
-    // await this.firestore.collection('posts').doc("post").
+  async getAllPosts(): Promise<any> {
+    const snapshot = await this.firestore.collection('posts').get();
+    const allPosts = snapshot.docs.map((doc) => doc.data());
+    return allPosts;
   }
 
-  async createPost(createPostDTO: CreatePostDTO): Promise<any> {
+  async createPost(createPostDto: CreatePostDto): Promise<any> {
     await this.firestore.collection('posts').add({
-      ...createPostDTO,
+      ...createPostDto,
+      createAt: FieldValue.serverTimestamp(),
+      updateAt: FieldValue.serverTimestamp(),
     });
   }
 
-  updatePost(): string {
-    return 'update post';
+  async updatePost(postId: string, updatePostDto: CreatePostDto): Promise<any> {
+    await this.firestore
+      .collection('posts')
+      .doc(postId)
+      .update({
+        ...updatePostDto,
+        updatedAt: FieldValue.serverTimestamp(),
+      });
   }
 
-  updatePartialPost(): string {
-    return 'update partial ';
+  async updatePartialPost(
+    postId: string,
+    updatePostDto: CreatePostDto,
+  ): Promise<any> {
+    await this.firestore
+      .collection('posts')
+      .doc(postId)
+      .update({
+        ...updatePostDto,
+        updatedAt: FieldValue.serverTimestamp(),
+      });
   }
 
-  deletePost(): string {
-    return 'delete post';
+  async deletePost(postId: string): Promise<any> {
+    await this.firestore.collection('posts').doc(postId).delete();
   }
+
+  async getPostByUserId() {}
 }

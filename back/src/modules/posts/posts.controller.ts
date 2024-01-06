@@ -3,12 +3,17 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { CreatePostDTO } from './dto/create-post.dto';
+import { CreatePostDto } from './dto/create-post.dto';
+import { AuthGuard } from '../auth/auth.guard';
+import { CurrentUser } from 'src/common/entities/decorators/user.decorator';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -18,28 +23,36 @@ export class PostsController {
     return this.postService.getAllPosts();
   }
 
-  @Get(':id')
-  getOnePost() {
-    return this.postService.getOnePost();
+  @Get(':postId')
+  getOnePost(@Param('postId') postId: string) {
+    return this.postService.getOnePost(postId);
   }
 
   @Post()
-  createPost(@Body() createPostDTO: CreatePostDTO) {
-    return this.postService.createPost(createPostDTO);
+  @UseGuards(AuthGuard)
+  createPost(
+    @Body() createPostDto: CreatePostDto,
+    @CurrentUser() user: CreateUserDto,
+  ) {
+    createPostDto.userId = user.userId;
+    return this.postService.createPost(createPostDto);
   }
 
-  @Put(':id')
-  updatePost() {
-    return this.postService.updatePost();
+  @Put(':postId')
+  updatePost(@Param('postId') postId: string, createPostDto: CreatePostDto) {
+    return this.postService.updatePost(postId, createPostDto);
   }
 
-  @Patch(':id')
-  updatePartialPost() {
-    return this.postService.updatePartialPost();
+  @Patch(':postId')
+  updatePartialPost(
+    @Param('postId') postId: string,
+    createPostDto: CreatePostDto,
+  ) {
+    return this.postService.updatePartialPost(postId, createPostDto);
   }
 
-  @Delete(':id')
-  deletePost() {
-    return this.postService.deletePost();
+  @Delete(':postId')
+  deletePost(@Param('postId') postId: string) {
+    return this.postService.deletePost(postId);
   }
 }

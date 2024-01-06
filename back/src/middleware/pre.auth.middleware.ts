@@ -18,19 +18,23 @@ export class PreAuthMiddleware implements NestMiddleware {
       const auth = this.firebaseService.getAuth();
       const firestore = this.firebaseService.getFirestore();
       const decodedToken = await auth.verifyIdToken(
-        token.replace('Bearer', ''),
+        token.replace('Bearer ', ''),
       );
       const { uid } = decodedToken;
 
       //해당 문서의 reference를 가져옴
       const userRef = firestore.collection('users').doc(uid);
 
-      //실제 문서 데이터
+      //문서 데이터
       const userSnap = await userRef.get();
       if (!userSnap.exists) throw new UnauthorizedException();
 
       req.user = { ...decodedToken, ...userSnap.data() };
-
+      console.log(
+        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+        userSnap.data(),
+        '!!!!!!!!!!!!!!',
+      );
       console.log(req.user);
 
       next();
